@@ -72,9 +72,11 @@ estrangeiras:
 	hora TIME,
     PRIMARY KEY(codm, `data`, hora),
     FOREIGN KEY(codm) 
-		REFERENCES medicos(codm),
+		REFERENCES medicos(codm)
+        ON DELETE CASCADE,
 	FOREIGN KEY (codp)
 		REFERENCES pacientes(codp)
+        ON DELETE CASCADE
  );
  
 /* 3. Crie a coluna nroa (int) na tabela Funcionarios */
