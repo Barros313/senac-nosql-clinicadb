@@ -4,10 +4,6 @@ Exercício MySQL - Parte 2
 Alunos: Gabriel Barros, Hugo Vinícius
 */
 
-/*
-OBS.: Algumas consultas foram feitas utilizando variáveis para realizar subselects e evitar 
-erros de safe update sem desabilitar a proteção
-*/
 
 /* 1. O paciente Paulo mudou-se para Ilhota */
 SET @paulo = (SELECT codp FROM pacientes WHERE nome LIKE "Paulo");
@@ -42,7 +38,15 @@ SET SQL_SAFE_UPDATES = 0;
 DELETE FROM consultas
 	WHERE hora > "19:00:00";
 SET SQL_SAFE_UPDATES = 1;
-SELECT * FROM consultas;
 
 /* 7. Os pacientes com câncer ou idade inferior a 10 anos deixaram a clínica */
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM pacientes
+	WHERE doenca = "cancer" OR idade < 10;
+SET SQL_SAFE_UPDATES = 1;
+
 /* 8. Os médicos que residem em Biguacu e Palhoca deixaram a clínica */
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM medicos 
+	WHERE cidade LIKE "Biguacu" OR cidade LIKE "Palhoca";
+SET SQL_SAFE_UPDATES = 1;
