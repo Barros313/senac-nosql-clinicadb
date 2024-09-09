@@ -1,5 +1,6 @@
 /*
-Exercício MySQL
+Exercício MySQL - Parte 1
+
 Alunos: Gabriel Barros, Hugo Vinícius
 */
 
